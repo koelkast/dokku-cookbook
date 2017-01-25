@@ -30,6 +30,7 @@ end
 
   package pkg do
     version node["dokku"]["package"][pkg]["version"]
+    action :upgrade
 
     if pkg == "dokku"
       notifies :run,
