@@ -25,7 +25,7 @@ describe "dokku::plugins" do
   context "when plugins exist in attributes and no actions are listed" do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new do |node|
-        node.set["dokku"]["plugins"] = [{
+        node.override["dokku"]["plugins"] = [{
           name: "redis",
           url: "https://github.com/dokku/dokku-redis.git"
         }]
@@ -46,7 +46,7 @@ describe "dokku::plugins" do
   context "when plugins exist in attributes" do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new do |node|
-        node.set["dokku"]["plugins"] = [
+        node.override["dokku"]["plugins"] = [
           { name: "redis", url: "https://github.com/dokku/dokku-redis.git",
             action: "install" },
           { name: "mongo", url: "https://github.com/dokku/dokku-mongo.git",
@@ -71,7 +71,7 @@ describe "dokku::plugins" do
   context "when plugins to be installed provide a commit to fetch" do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new do |node|
-        node.set["dokku"]["plugins"] = [
+        node.override["dokku"]["plugins"] = [
           { name: "redis", url: "https://github.com/dokku/dokku-redis.git",
             action: "install", committish: "0.4.0" },
         ]

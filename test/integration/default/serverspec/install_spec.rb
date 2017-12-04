@@ -15,7 +15,7 @@ describe "dokku::install" do
   end
 
   it "installs dokku" do
-    expect(package("dokku")).to be_installed.by("apt").with_version("0.5.6")
+    expect(package("dokku")).to be_installed.by("apt").with_version("0.10.5")
   end
 
   it "marks a hold on the dokku package" do

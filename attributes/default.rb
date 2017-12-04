@@ -4,10 +4,10 @@
 #
 # Copyright (c) 2015 Nick Charlton, MIT licensed.
 
-default["dokku"]["package"]["dokku"]["version"] = "0.7.2"
-default["dokku"]["package"]["herokuish"]["version"] = "0.3.18"
-default["dokku"]["package"]["sshcommand"]["version"] = "0.6.0"
-default["dokku"]["package"]["plugn"]["version"] = "0.2.2"
+default["dokku"]["package"]["dokku"]["version"] = "0.10.5"
+default["dokku"]["package"]["herokuish"]["version"] = "0.3.32"
+default["dokku"]["package"]["sshcommand"]["version"] = "0.7.0"
+default["dokku"]["package"]["plugn"]["version"] = "0.3.0"
 
 default["dokku"]["domain"] = nil
 default["dokku"]["ssh_keys"] = []

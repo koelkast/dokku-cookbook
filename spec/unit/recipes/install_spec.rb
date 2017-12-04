@@ -28,7 +28,7 @@ describe "dokku::install" do
     end
 
     it "installs dokku" do
-      expect(chef_run).to install_package("dokku").with(version: "0.5.6")
+      expect(chef_run).to install_package("dokku").with(version: "0.10.5")
     end
 
     it "marks a hold on the dokku package" do

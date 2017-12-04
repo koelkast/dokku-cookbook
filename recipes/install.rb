@@ -30,8 +30,7 @@ end
 
   package pkg do
     version node["dokku"]["package"][pkg]["version"]
-    action :upgrade
-    options '--force-yes'
+    action :install
 
     if pkg == "dokku"
       notifies :run,
@@ -49,7 +48,6 @@ end
 
 openssl_dhparam node["dokku"]["nginx"]["dhparam_file"] do
   key_length node["dokku"]["nginx"]["dhparam_key_length"]
-
   notifies :restart, "service[nginx]", :delayed
 end
 
