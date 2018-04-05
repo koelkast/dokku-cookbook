@@ -7,7 +7,8 @@
 include_recipe "dokku::_nginx"
 include_recipe "openssl"
 
-package "apt-transport-https"
+apt_update "apt-update"
+apt_package "apt-transport-https"
 
 docker_service "default" do
   action [:create, :start]
@@ -28,7 +29,7 @@ end
     action :nothing
   end
 
-  package pkg do
+  apt_package pkg do
     version node["dokku"]["package"][pkg]["version"]
     action :install
 

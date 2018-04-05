@@ -19,7 +19,7 @@ describe "dokku::install" do
 
     it "installs the required dependencies" do
       expect(chef_run).to include_recipe("dokku::_nginx")
-      expect(chef_run).to install_package "apt-transport-https"
+      expect(chef_run).to install_apt_package "apt-transport-https"
       expect(chef_run).to start_docker_service "default"
     end
 
@@ -28,21 +28,19 @@ describe "dokku::install" do
     end
 
     it "installs dokku" do
-      expect(chef_run).to install_package("dokku").with(version: "0.10.5")
+      expect(chef_run).to install_apt_package("dokku").with(version: "0.11.6")
     end
 
     it "marks a hold on the dokku package" do
-      resource = chef_run.package("dokku")
+      resource = chef_run.apt_package("dokku")
 
-      expect(resource).to notify(
-        "execute[hold-dependency-dokku]").to(:run).immediately
+      expect(resource).to notify("execute[hold-dependency-dokku]").to(:run).immediately
     end
 
     it "installs dokku plugin core dependencies" do
-      resource = chef_run.package("dokku")
+      resource = chef_run.apt_package("dokku")
 
-      expect(resource).to notify(
-        "execute[install-dokku-plugin-core-dependencies]").to(:run).immediately
+      expect(resource).to notify("execute[install-dokku-plugin-core-dependencies]").to(:run).immediately
     end
 
     it "creates the domain file" do
@@ -54,7 +52,7 @@ describe "dokku::install" do
     end
 
     it "configures a custom dhparams file" do
-      expect(chef_run).to create_dhparam_pem("/etc/ssl/certs/dhparam.pem")
+      expect(chef_run).to create_openssl_dhparam("/etc/ssl/certs/dhparam.pem")
     end
   end
 end

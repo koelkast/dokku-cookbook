@@ -6,5 +6,5 @@ group :integration do
   gem "chefspec"
   gem "berkshelf"
   gem "test-kitchen"
-  gem "kitchen-dokken"
+  gem "kitchen-vagrant"
 end
